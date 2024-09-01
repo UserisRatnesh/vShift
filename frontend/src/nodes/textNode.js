@@ -25,6 +25,13 @@ export const TextNode = ({ id, data }) => {
             type="text"
             value={currText}
             onChange={handleTextChange}
+            style={{
+              width: '93.5%',
+              padding: '6px',
+              borderRadius: '4px',
+              border: '1px solid #CCC',
+              marginTop: '4px',
+            }}
           />
         </label>
       </div>

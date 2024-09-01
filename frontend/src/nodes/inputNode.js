@@ -29,7 +29,7 @@ export const InputNode = ({ id, data }) => {
             value={currName}
             onChange={handleNameChange}
             style={{
-              width: '100%',
+              width: '93.5%',
               padding: '6px',
               borderRadius: '4px',
               border: '1px solid #CCC',

@@ -1,5 +1,5 @@
 1. Make five new components like llm model, input and output.
-2. Style each components i.e llm model box, input box, output box and so on.
+2. Style each components i.e llm model box, input box, output box and so on. ==> DONE
 3. Expand the size of the text node depending upon text entered inside the input box.
 4. Variable handle.
 5. Find the graph is acyclic or not.
