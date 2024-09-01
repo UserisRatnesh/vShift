@@ -5,9 +5,9 @@
 import { useState, useRef, useCallback } from 'react';
 import { MarkerType } from 'reactflow';
 import ReactFlow, { Controls, Background, applyNodeChanges, applyEdgeChanges, addEdge, MiniMap } from 'reactflow';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { nodesState, edgesState } from '../store/atom/atom';
-import { getNextNodeID } from "../store/selector/selector";
+import { useRecoilState } from 'recoil';
+import { nodesState, edgesState, nodeIDsState } from '../store/atom/atom';
+import { } from "../store/selector/selector";
 import { InputNode } from '../nodes/inputNode';
 import { LLMNode } from '../nodes/llmNode';
 import { OutputNode } from '../nodes/outputNode';
@@ -30,11 +30,21 @@ export const PipelineUI = () => {
 
   const [nodes, setNodes] = useRecoilState(nodesState);
   const [edges, setEdges] = useRecoilState(edgesState);
-  const getNodeID = useRecoilValue(getNextNodeID);
+  const [nodeIDs, setNodeIDs] = useRecoilState(nodeIDsState);
 
   const getInitNodeData = (nodeID, type) => {
     return { id: nodeID, nodeType: `${type}` };
   };
+
+  const getNodeID = useCallback((type) => {
+    const newIDs = { ...nodeIDs };
+    if (newIDs[type] === undefined) {
+      newIDs[type] = 0;
+    }
+    newIDs[type] += 1;
+    setNodeIDs(newIDs);
+    return `${type}-${newIDs[type]}`;
+  }, [nodeIDs, setNodeIDs]);
 
   const addNode = useCallback((node) => {
     setNodes((prevNodes) => [...prevNodes, node]);
