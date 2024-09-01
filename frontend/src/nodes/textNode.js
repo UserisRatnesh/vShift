@@ -1,7 +1,10 @@
 // // textNode.js
 
+import '../styles/styles.css';
+
 import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+import { RightDot } from '../components/ConnectDots';
+
 
 export const TextNode = ({ id, data }) => {
   const [currText, setCurrText] = useState(data?.text || 'text_input');
@@ -11,9 +14,9 @@ export const TextNode = ({ id, data }) => {
   };
 
   return (
-    <div style={{ width: 200, height: 80, border: '1px solid black' }}>
-      <div>
-        <span>Text</span>
+    <div class="textCard">
+      <div class="nodeHeading" >
+        Text
       </div>
       <div>
         <label>
@@ -25,11 +28,7 @@ export const TextNode = ({ id, data }) => {
           />
         </label>
       </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-output`}
-      />
+      <RightDot id={id}></RightDot>
     </div>
   );
 }

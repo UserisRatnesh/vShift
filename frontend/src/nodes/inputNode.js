@@ -1,7 +1,7 @@
-// inputNode.js
-
+import '../styles/styles.css';
 import { useState } from 'react';
-import { Handle, Position } from 'reactflow';
+
+import { LeftDot, RightDot } from '../components/ConnectDots';
 
 export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
@@ -16,32 +16,46 @@ export const InputNode = ({ id, data }) => {
   };
 
   return (
-    <div style={{width: 200, height: 80, border: '1px solid black'}}>
-      <div>
-        <span>Input</span>
+    <div class="parentCard">
+      <LeftDot id={id}></LeftDot>
+      <div class="nodeHeading" >
+        Input
       </div>
-      <div>
-        <label>
+      <div style={{ marginBottom: '6px' }}>
+        <label style={{ display: 'block', marginBottom: '4px' }}>
           Name:
-          <input 
-            type="text" 
-            value={currName} 
-            onChange={handleNameChange} 
+          <input
+            type="text"
+            value={currName}
+            onChange={handleNameChange}
+            style={{
+              width: '100%',
+              padding: '6px',
+              borderRadius: '4px',
+              border: '1px solid #CCC',
+              marginTop: '4px',
+            }}
           />
         </label>
-        <label>
+        <label style={{ display: 'block' }}>
           Type:
-          <select value={inputType} onChange={handleTypeChange}>
+          <select
+            value={inputType}
+            onChange={handleTypeChange}
+            style={{
+              width: '100%',
+              padding: '6px',
+              borderRadius: '4px',
+              border: '1px solid #CCC',
+              marginTop: '4px',
+            }}
+          >
             <option value="Text">Text</option>
             <option value="File">File</option>
           </select>
         </label>
       </div>
-      <Handle
-        type="source"
-        position={Position.Right}
-        id={`${id}-value`}
-      />
+      <RightDot></RightDot>
     </div>
   );
-}
+};
