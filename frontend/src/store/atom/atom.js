@@ -20,7 +20,3 @@ export const nodeIDsState = atom({
     default: {},
 });
 
-export const currTextState = atom({
-    key: 'currTextState',
-    default: 'text input'
-})
