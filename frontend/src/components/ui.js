@@ -12,6 +12,8 @@ import { InputNode } from '../nodes/inputNode';
 import { LLMNode } from '../nodes/llmNode';
 import { OutputNode } from '../nodes/outputNode';
 import { TextNode } from '../nodes/textNode';
+import { DalleNode } from '../nodes/Dalle';
+import { SpeechNode } from '../nodes/Speech';
 
 import 'reactflow/dist/style.css';
 
@@ -20,8 +22,10 @@ const proOptions = { hideAttribution: true };
 const nodeTypes = {
   customInput: InputNode,
   llm: LLMNode,
+  dalle: DalleNode,
+  speech: SpeechNode,
   customOutput: OutputNode,
-  text: TextNode,
+  text: TextNode
 };
 
 export const PipelineUI = () => {
@@ -58,45 +62,45 @@ export const PipelineUI = () => {
     setEdges((prevEdges) => applyEdgeChanges(changes, prevEdges));
   }, [setEdges]);
 
-  // const onConnect = useCallback((connection) => {
-  //   setEdges((prevEdges) => addEdge({
-  //     ...connection,
-  //     type: 'smoothstep',
-  //     animated: true,
-  //     markerEnd: {
-  //       type: MarkerType.Arrow,
-  //       height: '20px',
-  //       width: '20px',
-  //     },
-  //   }, prevEdges));
-  // }, [setEdges]);
-
-
-  const onConnect = useCallback((params) => {
-    console.log('Connection Params:', params);
-    const { sourceHandle, targetHandle } = params;
-
-    if (!sourceHandle || !targetHandle) {
-      console.error("Connection failed due to missing handle IDs", params);
-      return;
-    }
-
-    setEdges((prevEdges) =>
-      addEdge(
-        {
-          ...params,
-          type: 'smoothstep',
-          animated: true,
-          markerEnd: {
-            type: MarkerType.Arrow,
-            height: '20px',
-            width: '20px',
-          },
-        },
-        prevEdges
-      )
-    );
+  const onConnect = useCallback((connection) => {
+    setEdges((prevEdges) => addEdge({
+      ...connection,
+      type: 'smoothstep',
+      animated: true,
+      markerEnd: {
+        type: MarkerType.Arrow,
+        height: '20px',
+        width: '20px',
+      },
+    }, prevEdges));
   }, [setEdges]);
+
+
+  // const onConnect = useCallback((params) => {
+  //   console.log('Connection Params:', params);
+  //   const { sourceHandle, targetHandle } = params;
+
+  //   if (!sourceHandle || !targetHandle) {
+  //     console.error("Connection failed due to missing handle IDs", params);
+  //     return;
+  //   }
+
+  //   setEdges((prevEdges) =>
+  //     addEdge(
+  //       {
+  //         ...params,
+  //         type: 'smoothstep',
+  //         animated: true,
+  //         markerEnd: {
+  //           type: MarkerType.Arrow,
+  //           height: '20px',
+  //           width: '20px',
+  //         },
+  //       },
+  //       prevEdges
+  //     )
+  //   );
+  // }, [setEdges]);
 
 
 
