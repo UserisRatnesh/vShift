@@ -58,18 +58,47 @@ export const PipelineUI = () => {
     setEdges((prevEdges) => applyEdgeChanges(changes, prevEdges));
   }, [setEdges]);
 
-  const onConnect = useCallback((connection) => {
-    setEdges((prevEdges) => addEdge({
-      ...connection,
-      type: 'smoothstep',
-      animated: true,
-      markerEnd: {
-        type: MarkerType.Arrow,
-        height: '20px',
-        width: '20px',
-      },
-    }, prevEdges));
+  // const onConnect = useCallback((connection) => {
+  //   setEdges((prevEdges) => addEdge({
+  //     ...connection,
+  //     type: 'smoothstep',
+  //     animated: true,
+  //     markerEnd: {
+  //       type: MarkerType.Arrow,
+  //       height: '20px',
+  //       width: '20px',
+  //     },
+  //   }, prevEdges));
+  // }, [setEdges]);
+
+
+  const onConnect = useCallback((params) => {
+    console.log('Connection Params:', params);
+    const { sourceHandle, targetHandle } = params;
+
+    if (!sourceHandle || !targetHandle) {
+      console.error("Connection failed due to missing handle IDs", params);
+      return;
+    }
+
+    setEdges((prevEdges) =>
+      addEdge(
+        {
+          ...params,
+          type: 'smoothstep',
+          animated: true,
+          markerEnd: {
+            type: MarkerType.Arrow,
+            height: '20px',
+            width: '20px',
+          },
+        },
+        prevEdges
+      )
+    );
   }, [setEdges]);
+
+
 
   const onDrop = useCallback(
     (event) => {

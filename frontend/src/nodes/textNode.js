@@ -28,7 +28,7 @@ export const TextNode = ({ id, data }) => {
 
     // Create handles based on extracted variables
     setHandles(variables.map((variable, index) => ({
-      id: `${id}-var-${index}`,
+      id: `${id}-${index}`,
       variable,
       top: `${(index + 1) * (100 / (variables.length + 1))}%`,
     })));
