@@ -20,9 +20,9 @@ export const OutputNode = ({ id, data }) => {
   };
 
   return (
-    <div class="parentCard" >
+    <div className="parentCard" >
       <LeftDot></LeftDot>
-      <div class="nodeHeading" >
+      <div className="nodeHeading" >
         Output
       </div>
       <div>

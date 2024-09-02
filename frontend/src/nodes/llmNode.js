@@ -6,11 +6,11 @@ import '../styles/styles.css';
 
 export const LLMNode = ({ id, data }) => {
   return (
-    <div class="llmNode">
+    <div className="llmNode">
       <LlmLeftDot id={id} location={30}></LlmLeftDot>
       <LlmLeftDot id={id} location={60}></LlmLeftDot>
 
-      <div class="nodeHeading">
+      <div className="nodeHeading">
         LLM Node
       </div>
       <div style={{ textAlign: 'center', fontSize: 14 }}>

@@ -16,9 +16,9 @@ export const InputNode = ({ id, data }) => {
   };
 
   return (
-    <div class="parentCard">
+    <div className="parentCard">
       <LeftDot id={id}></LeftDot>
-      <div class="nodeHeading" >
+      <div className="nodeHeading" >
         Input
       </div>
       <div style={{ marginBottom: '6px' }}>
