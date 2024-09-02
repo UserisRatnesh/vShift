@@ -28,13 +28,6 @@ export const InputNode = ({ id, data }) => {
             type="text"
             value={currName}
             onChange={handleNameChange}
-            style={{
-              width: '93.5%',
-              padding: '6px',
-              borderRadius: '4px',
-              border: '1px solid #CCC',
-              marginTop: '4px',
-            }}
           />
         </label>
         <label style={{ display: 'block' }}>
@@ -42,13 +35,6 @@ export const InputNode = ({ id, data }) => {
           <select
             value={inputType}
             onChange={handleTypeChange}
-            style={{
-              width: '100%',
-              padding: '6px',
-              borderRadius: '4px',
-              border: '1px solid #CCC',
-              marginTop: '4px',
-            }}
           >
             <option value="Text">Text</option>
             <option value="File">File</option>

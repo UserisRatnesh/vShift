@@ -25,38 +25,23 @@ export const OutputNode = ({ id, data }) => {
       <div className="nodeHeading" >
         Output
       </div>
-      <div>
-        <label>
+      <div style={{ marginBottom: '6px' }}>
+        <label style={{ display: 'block', marginBottom: '4px' }}>
           Name:
           <input
             type="text"
             value={currName}
             onChange={handleNameChange}
-            style={{
-              width: '93.5%',
-              padding: '6px',
-              borderRadius: '4px',
-              border: '1px solid #CCC',
-              marginTop: '4px',
-            }}
           />
         </label>
         <label>
           Type:
-          <select value={outputType} onChange={handleTypeChange}
-            style={{
-              width: '100%',
-              padding: '6px',
-              borderRadius: '4px',
-              border: '1px solid #CCC',
-              marginTop: '4px',
-            }}>
+          <select value={outputType} onChange={handleTypeChange}>
             <option value="Text">Text</option>
             <option value="File">Image</option>
-
           </select>
         </label>
       </div>
-    </div >
+    </div>
   );
 }
