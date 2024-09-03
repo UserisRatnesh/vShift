@@ -13,6 +13,10 @@ import { LLMNode } from '../nodes/llmNode';
 import { OutputNode } from '../nodes/outputNode';
 import { TextNode } from '../nodes/textNode';
 import { DalleNode } from '../nodes/Dalle';
+import { SpeechNode } from '../nodes/Speech';
+import { AudioNode } from '../nodes/AudioNode';
+import { ImageNode } from '../nodes/ImageNode';
+import { VoiceNode } from '../nodes/VoiceNode';
 
 import 'reactflow/dist/style.css';
 
@@ -23,7 +27,11 @@ const nodeTypes = {
   llm: LLMNode,
   dalle: DalleNode,
   customOutput: OutputNode,
-  text: TextNode
+  speech: SpeechNode,
+  audio: AudioNode,
+  image: ImageNode,
+  text: TextNode,
+  voice: VoiceNode
 };
 
 export const PipelineUI = () => {
