@@ -11,6 +11,7 @@ export const PipelineToolbar = () => {
                 <DraggableNode type='llm' label='LLM' />
                 <DraggableNode type='voice' label='Voice' />
                 <DraggableNode type='image' label='Image' />
+                <DraggableNode type='image' label='Image2' />
                 <DraggableNode type='audio' label='Audio' />
                 <DraggableNode type='speech' label='Speech' />
                 <DraggableNode type='dalle' label='Dalle' />
