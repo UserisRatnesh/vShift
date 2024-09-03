@@ -11,6 +11,8 @@ export const TextNode = ({ id, data }) => {
   const [handles, setHandles] = useState([]);
   const inputRef = useRef(null);
 
+  const { label } = data;
+
   const handleTextChange = (e) => {
     setCurrText(e.target.value);
   };
@@ -37,7 +39,7 @@ export const TextNode = ({ id, data }) => {
   return (
     <div className="textCard" >
       <div className="nodeHeading">
-        Text
+        {label}
       </div>
       <div>
         <label>

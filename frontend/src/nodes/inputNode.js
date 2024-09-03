@@ -7,6 +7,8 @@ export const InputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.inputName || id.replace('customInput-', 'input_'));
   const [inputType, setInputType] = useState(data.inputType || 'Text');
 
+  const { label } = data;
+
   const handleNameChange = (e) => {
     setCurrName(e.target.value);
   };
@@ -19,7 +21,7 @@ export const InputNode = ({ id, data }) => {
     <div className="parentCard">
       <LeftDot id={id}></LeftDot>
       <div className="nodeHeading" >
-        Input
+        {label}
       </div>
       <div style={{ marginBottom: '6px' }}>
         <label style={{ display: 'block', marginBottom: '4px' }}>

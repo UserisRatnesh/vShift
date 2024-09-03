@@ -9,10 +9,10 @@ export const PipelineToolbar = () => {
             <div className="pipeLineToolbar">
                 <DraggableNode type='customInput' label='Input' />
                 <DraggableNode type='llm' label='LLM' />
+                <DraggableNode type='dalle' label='Dalle' />
                 <DraggableNode type='customOutput' label='Output' />
                 <DraggableNode type='text' label='Text' />
-                <DraggableNode type='speech' label='Speech' />
-                <DraggableNode type='dalle' label='DALLE' />
+
 
             </div>
         </div>

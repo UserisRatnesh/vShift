@@ -11,6 +11,8 @@ export const OutputNode = ({ id, data }) => {
   const [currName, setCurrName] = useState(data?.outputName || id.replace('customOutput-', 'output_'));
   const [outputType, setOutputType] = useState(data.outputType || 'Text');
 
+  const { label } = data;
+
   const handleNameChange = (e) => {
     setCurrName(e.target.value);
   };
@@ -23,7 +25,7 @@ export const OutputNode = ({ id, data }) => {
     <div className="parentCard" >
       <LeftDot></LeftDot>
       <div className="nodeHeading" >
-        Output
+        {label}
       </div>
       <div style={{ marginBottom: '6px' }}>
         <label style={{ display: 'block', marginBottom: '4px' }}>

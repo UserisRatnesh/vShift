@@ -13,7 +13,6 @@ import { LLMNode } from '../nodes/llmNode';
 import { OutputNode } from '../nodes/outputNode';
 import { TextNode } from '../nodes/textNode';
 import { DalleNode } from '../nodes/Dalle';
-import { SpeechNode } from '../nodes/Speech';
 
 import 'reactflow/dist/style.css';
 
@@ -23,7 +22,6 @@ const nodeTypes = {
   customInput: InputNode,
   llm: LLMNode,
   dalle: DalleNode,
-  speech: SpeechNode,
   customOutput: OutputNode,
   text: TextNode
 };
@@ -104,14 +102,50 @@ export const PipelineUI = () => {
 
 
 
+  // const onDrop = useCallback(
+  //   (event) => {
+  //     event.preventDefault();
+
+  //     const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+  //     if (event?.dataTransfer?.getData('application/reactflow')) {
+  //       const appData = JSON.parse(event.dataTransfer.getData('application/reactflow'));
+  //       const type = appData?.nodeType;
+
+  //       // Check if the dropped element is valid
+  //       if (typeof type === 'undefined' || !type) {
+  //         return;
+  //       }
+
+  //       const position = reactFlowInstance.project({
+  //         x: event.clientX - reactFlowBounds.left,
+  //         y: event.clientY - reactFlowBounds.top,
+  //       });
+
+  //       const nodeID = getNodeID(type);
+  //       const newNode = {
+  //         id: nodeID,
+  //         type,
+  //         position,
+  //         data: getInitNodeData(nodeID, type),
+  //       };
+
+  //       addNode(newNode);
+  //     }
+  //   },
+  //   [reactFlowInstance, getNodeID, addNode]
+  // );
+
   const onDrop = useCallback(
     (event) => {
       event.preventDefault();
 
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-      if (event?.dataTransfer?.getData('application/reactflow')) {
-        const appData = JSON.parse(event.dataTransfer.getData('application/reactflow'));
+      const dataTransfer = event?.dataTransfer?.getData('application/reactflow');
+
+      if (dataTransfer) {
+        const appData = JSON.parse(dataTransfer);
         const type = appData?.nodeType;
+        const label = appData?.label; // Extract the label from appData
 
         // Check if the dropped element is valid
         if (typeof type === 'undefined' || !type) {
@@ -128,7 +162,10 @@ export const PipelineUI = () => {
           id: nodeID,
           type,
           position,
-          data: getInitNodeData(nodeID, type),
+          data: {
+            ...getInitNodeData(nodeID, type),
+            label, // Add the label to the node's data
+          },
         };
 
         addNode(newNode);
@@ -136,6 +173,7 @@ export const PipelineUI = () => {
     },
     [reactFlowInstance, getNodeID, addNode]
   );
+
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
